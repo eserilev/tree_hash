@@ -128,7 +128,7 @@ impl TreeHash for U256 {
     }
 
     fn tree_hash_packed_encoding(&self) -> PackedEncoding {
-        PackedEncoding::from_slice(self.as_le_slice())
+        PackedEncoding::from_slice(&self.to_le_bytes::<32>())
     }
 
     fn tree_hash_packing_factor() -> usize {
@@ -136,7 +136,7 @@ impl TreeHash for U256 {
     }
 
     fn tree_hash_root(&self) -> Hash256 {
-        Hash256::from_slice(self.as_le_slice())
+        Hash256::from_slice(&self.to_le_bytes::<32>())
     }
 }
 
